@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>JSON取数测试</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.bootcss.com/vue/2.2.2/vue.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="main">
+        <table border=1>
+            <tr>
+                <td>name</td>
+                <!-- <td>name</td> -->
+                <!-- <td>type</td> -->
+                <!-- <td>location</td> -->
+            </tr>
+            <tr v-for="r in rows">
+                <td>{{r.movie_name}}</td>
+                <!-- <td>{{r.name}}</td> -->
+                <!-- <td>{{r.type}}</td> -->
+                <!-- <td>{{r.location}}</td> -->
+            </tr>
+        </table>
+    </div>
+</body>
+<script>
+    $(document).ready(function () {
+        $.getJSON("http://localhost:9988/v1/buckets/movie_1/keys/name", function (result, status) {
+            var v = new Vue({
+                el: '#main',
+                data: {
+                    rows: result
+                }
+            })
+        });
+    });
+</script>
+
+</html>
