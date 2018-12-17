@@ -75,7 +75,8 @@ func (s *server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		w.Header().Add("Content-Type", ct)
-		w.Header().Add("Access-Control-Allow-Origin", "http://localhost")
+		w.Header().Add("Access-Control-Allow-Headers", "Content-Type")
+		w.Header().Add("Access-Control-Allow-Origin", "*")
 		w.Write(data)
 	}
 }
